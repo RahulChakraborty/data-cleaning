@@ -1,0 +1,7 @@
+read Menu, MenuPage, MenuItem, Dish
+
+result missing_dish_reference(dish_id) :-
+    MenuItem(dish_id: dish_id),
+    not Dish(id: dish_id).
+
+write missing_dish_reference to "missing_dish_references.csv"

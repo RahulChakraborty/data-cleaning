@@ -1,0 +1,16 @@
+Constraint,Violations_Original,Violations_Cleaned,Improvement,Status
+Missing Dish References,1,0,1,✅ FIXED
+Missing Menu References,0,0,0,✅ CLEAN
+Missing Page References,0,0,0,✅ CLEAN
+Invalid Negative Prices,0,0,0,✅ CLEAN
+Inconsistent Price Ranges,0,0,0,✅ CLEAN
+Extreme Price Outliers,0,0,0,✅ CLEAN
+Empty Dish Names,0,0,0,✅ CLEAN
+Duplicate Dish Names,0,0,0,✅ CLEAN
+Empty Menu Pages,3,0,3,✅ FIXED
+Inconsistent Page Counts,1,0,1,✅ FIXED
+Inconsistent Dish Counts,5,0,5,✅ FIXED
+Anachronistic Dates,0,0,0,✅ CLEAN
+Cleaning Broke References,0,0,0,✅ CLEAN
+Uncapped Outliers Remain,0,0,0,✅ CLEAN
+Uncleaned Dish Names,20,0,20,✅ FIXED

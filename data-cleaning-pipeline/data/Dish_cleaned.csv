@@ -1,0 +1,21 @@
+id,name,description,menus_appeared,times_appeared,first_appeared,last_appeared,lowest_price,highest_price,name_original
+1,Oysters Rockefeller,Fresh oysters baked with spinach & herbs,3,8,1899-12-31,1920-11-25,0.75,2.5,Oysters Rockefeller
+2,Lobster Thermidor,Lobster in creamy cognac sauce,4,12,1899-12-31,1920-11-25,3.25,8.75,Lobster Thermidor
+3,Beef Wellington,Tenderloin wrapped in puff pastry,2,6,1905-06-15,1915-04-10,2.5,5.0,Beef Wellington
+4,Consommé Célestine,Clear soup with herb pancake strips,5,15,1899-12-31,1920-11-25,0.5,1.25,Consommé Célestine
+5,Canvasback Duck,Roasted wild duck with orange glaze,3,9,1899-12-31,1915-04-10,2.75,4.5,Canvasback Duck
+6,Terrapin Stew,Maryland terrapin in sherry cream,2,4,1905-06-15,1910-03-20,4.0,6.25,Terrapin Stew
+7,Sweetbreads À la Financière,Veal sweetbreads in rich sauce,4,11,1899-12-31,1920-11-25,1.75,3.5,Sweetbreads à la Financière
+8,Green Turtle Soup,Traditional turtle soup with sherry,3,7,1899-12-31,1915-04-10,1.0,2.25,Green Turtle Soup
+9,Filet de Sole Marguery,Dover sole with oysters & shrimp,2,5,1910-03-20,1920-11-25,2.25,4.75,Filet de Sole Marguery
+10,Poulet À la King,Diced chicken in cream sauce,4,13,1905-06-15,1920-11-25,1.5,3.25,Poulet à la King
+11,Roman Punch,Lemon sorbet with rum,5,18,1899-12-31,1920-11-25,0.25,0.75,Roman Punch
+12,Charlotte Russe,Molded dessert with ladyfingers,3,9,1905-06-15,1920-11-25,0.5,1.5,Charlotte Russe
+13,Peach Melba,Peaches with vanilla ice cream,2,6,1910-03-20,1920-11-25,0.75,1.75,Peach Melba
+14,Baked Alaska,Ice cream cake with meringue,3,8,1905-06-15,1920-11-25,1.25,2.75,Baked Alaska
+15,Café Brûlot,Flaming coffee with spices,4,14,1899-12-31,1920-11-25,0.35,0.85,Café Brûlot
+16,Blue Point Oysters,Raw oysters on half shell,4,16,1899-12-31,1920-11-25,0.6,1.8,Blue Point Oysters
+17,Pâté de Foie Gras,Goose liver pâté with truffles,2,4,1910-03-20,1920-11-25,3.5,7.0,Pâté de Foie Gras
+18,Squab en Casserole,Young pigeon braised with vegetables,3,7,1905-06-15,1920-11-25,2.0,4.25,Squab en Casserole
+19,Asparagus Hollandaise,Fresh asparagus with butter sauce,5,12,1899-12-31,1920-11-25,0.85,2.1,Asparagus Hollandaise
+20,Strawberries Romanoff,Strawberries with cream & liqueur,2,5,1915-04-10,1920-11-25,1.0,2.5,Strawberries Romanoff

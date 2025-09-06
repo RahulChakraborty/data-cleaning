@@ -1,0 +1,122 @@
+# Enhanced Integrity Constraints for NYPL Menu Dataset
+# This file defines comprehensive data integrity rules using Logica syntax
+
+# Read all tables (both original and cleaned versions)
+read Menu, MenuPage, MenuItem, Dish
+read Menu_cleaned, MenuItem_cleaned, Dish_cleaned
+
+# ============================================================================
+# REFERENTIAL INTEGRITY CONSTRAINTS
+# ============================================================================
+
+# Rule 1: Missing dish references in menu items
+result missing_dish_reference(menu_item_id, dish_id) :-
+    MenuItem(id: menu_item_id, dish_id: dish_id),
+    not Dish(id: dish_id).
+
+# Rule 2: Missing menu references in menu pages
+result missing_menu_reference(page_id, menu_id) :-
+    MenuPage(id: page_id, menu_id: menu_id),
+    not Menu(id: menu_id).
+
+# Rule 3: Missing menu page references in menu items
+result missing_page_reference(item_id, page_id) :-
+    MenuItem(id: item_id, menu_page_id: page_id),
+    not MenuPage(id: page_id).
+
+# ============================================================================
+# DATA QUALITY CONSTRAINTS
+# ============================================================================
+
+# Rule 4: Invalid price ranges (negative prices)
+result invalid_negative_price(item_id, price) :-
+    MenuItem(id: item_id, price: price),
+    price < 0.
+
+# Rule 5: Inconsistent price ranges (high_price < price)
+result inconsistent_price_range(item_id, price, high_price) :-
+    MenuItem(id: item_id, price: price, high_price: high_price),
+    high_price != null,
+    high_price < price.
+
+# Rule 6: Extreme price outliers (> $100 in historical context)
+result extreme_price_outlier(item_id, price) :-
+    MenuItem(id: item_id, price: price),
+    price > 100.0.
+
+# Rule 7: Empty or null dish names
+result empty_dish_name(dish_id, name) :-
+    Dish(id: dish_id, name: name),
+    (name == null || name == "").
+
+# Rule 8: Duplicate dish names (potential data quality issue)
+result duplicate_dish_names(dish_id1, dish_id2, name) :-
+    Dish(id: dish_id1, name: name),
+    Dish(id: dish_id2, name: name),
+    dish_id1 != dish_id2.
+
+# ============================================================================
+# BUSINESS LOGIC CONSTRAINTS
+# ============================================================================
+
+# Rule 9: Menu pages without menu items
+result empty_menu_pages(page_id, menu_id) :-
+    MenuPage(id: page_id, menu_id: menu_id),
+    not MenuItem(menu_page_id: page_id).
+
+# Rule 10: Menus with inconsistent page counts
+result inconsistent_page_count(menu_id, declared_count, actual_count) :-
+    Menu(id: menu_id, page_count: declared_count),
+    actual_count = count(MenuPage(menu_id: menu_id)),
+    declared_count != actual_count.
+
+# Rule 11: Menus with inconsistent dish counts
+result inconsistent_dish_count(menu_id, declared_count, actual_count) :-
+    Menu(id: menu_id, dish_count: declared_count),
+    actual_count = count(MenuItem(menu_page_id: page_id) :- MenuPage(id: page_id, menu_id: menu_id)),
+    declared_count != actual_count.
+
+# Rule 12: Historical date inconsistencies (future dates in historical context)
+result anachronistic_dates(menu_id, date) :-
+    Menu(id: menu_id, date: date),
+    date > "1930-01-01".  # Assuming dataset should be pre-1930
+
+# ============================================================================
+# CLEANED DATA VALIDATION
+# ============================================================================
+
+# Rule 13: Verify cleaning preserved referential integrity
+result cleaning_broke_references(item_id, dish_id) :-
+    MenuItem_cleaned(id: item_id, dish_id: dish_id),
+    not Dish_cleaned(id: dish_id).
+
+# Rule 14: Verify price outliers were properly handled
+result uncapped_outliers_remain(item_id, price) :-
+    MenuItem_cleaned(id: item_id, price: price),
+    price > 60.0.  # Should be capped based on our cleaning logic
+
+# Rule 15: Verify dish name cleaning was applied
+result uncleaned_dish_names(dish_id, name) :-
+    Dish_cleaned(id: dish_id, name: name),
+    name != title_case(name).
+
+# ============================================================================
+# OUTPUT SPECIFICATIONS
+# ============================================================================
+
+# Write all constraint violations to separate CSV files
+write missing_dish_reference to "missing_dish_references.csv"
+write missing_menu_reference to "missing_menu_references.csv"
+write missing_page_reference to "missing_page_references.csv"
+write invalid_negative_price to "invalid_negative_prices.csv"
+write inconsistent_price_range to "inconsistent_price_ranges.csv"
+write extreme_price_outlier to "extreme_price_outliers.csv"
+write empty_dish_name to "empty_dish_names.csv"
+write duplicate_dish_names to "duplicate_dish_names.csv"
+write empty_menu_pages to "empty_menu_pages.csv"
+write inconsistent_page_count to "inconsistent_page_counts.csv"
+write inconsistent_dish_count to "inconsistent_dish_counts.csv"
+write anachronistic_dates to "anachronistic_dates.csv"
+write cleaning_broke_references to "cleaning_broke_references.csv"
+write uncapped_outliers_remain to "uncapped_outliers_remain.csv"
+write uncleaned_dish_names to "uncleaned_dish_names.csv"

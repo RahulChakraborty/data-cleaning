@@ -1,0 +1,7 @@
+# Working Logica integrity checks for NYPL Menu Dataset
+# Using proper Logica syntax for BigQuery/SQL generation
+
+# Define the main integrity check predicate
+MissingDishReference(menu_item_id, dish_id) :-
+  MenuItem(id: menu_item_id, dish_id:),
+  ~Dish(id: dish_id).

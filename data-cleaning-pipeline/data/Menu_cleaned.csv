@@ -1,0 +1,6 @@
+id,name,sponsor,event,venue,place,date,location,status,page_count,dish_count,location_original
+1,Delmonico's Menu,Delmonico's Restaurant,New Year's Dinner,Delmonico's,New York,1899-12-31,Manhattan,complete,4,25,Manhattan
+2,Hotel Astor Banquet,Hotel Astor,Wedding Reception,Hotel Astor,New York,1905-06-15,Times Square,complete,2,18,Times Square
+3,Waldorf-Astoria Dinner,Waldorf-Astoria,Business Dinner,Waldorf-Astoria,New York,1910-03-20,Fifth Avenue,complete,3,22,Fifth Avenue
+4,Plaza Hotel Menu,Plaza Hotel,Sunday Brunch,Plaza Hotel,New York,1915-04-10,Central Park South,complete,2,15,Central Park South
+5,Ritz-Carlton Gala,Ritz-Carlton,Charity Gala,Ritz-Carlton,New York,1920-11-25,Madison Avenue,incomplete,5,35,Madison Avenue

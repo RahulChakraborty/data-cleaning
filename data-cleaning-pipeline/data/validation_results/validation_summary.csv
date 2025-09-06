@@ -1,0 +1,14 @@
+Category,Metric,Value
+Dataset Size,Original Menus,5
+Dataset Size,Cleaned Menus,5
+Dataset Size,Original Items,36
+Dataset Size,Cleaned Items,35
+Dataset Size,Original Dishes,20
+Dataset Size,Cleaned Dishes,20
+Data Quality Improvements,Price Outliers Handled,1
+Data Quality Improvements,Orphaned Items Removed,1
+Data Quality Improvements,Locations Standardized,0
+Data Quality Improvements,Dish Names Cleaned,2
+Data Preservation,Seafood Dishes Preserved,6/6 (100.0%)
+Data Preservation,Menu Timeline Preserved,Yes
+Data Preservation,Data Completeness,80.3%

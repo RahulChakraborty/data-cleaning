@@ -1,0 +1,16 @@
+Constraint,Violations
+Missing Dish References,1
+Missing Menu References,0
+Missing Page References,0
+Invalid Negative Prices,0
+Inconsistent Price Ranges,0
+Extreme Price Outliers,0
+Empty Dish Names,0
+Duplicate Dish Names,0
+Empty Menu Pages,3
+Inconsistent Page Counts,1
+Inconsistent Dish Counts,5
+Anachronistic Dates,0
+Cleaning Broke References,0
+Uncapped Outliers Remain,0
+Uncleaned Dish Names,20

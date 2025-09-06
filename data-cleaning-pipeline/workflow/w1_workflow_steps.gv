@@ -1,0 +1,66 @@
+digraph Workflow {
+rankdir=LR
+fontname=Helvetica; fontsize=18; labelloc=t
+label=Enhanced_Data_Cleaning_Pipeline_W1
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; penwidth=0
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica]
+Step1_Data_Loading [shape=record rankdir=LR label="{{<f0> Step1_Data_Loading |<f1> Load CSV files into pandas DataFrames and import to SQLite database}}"];
+Step2_Data_Profiling [shape=record rankdir=LR label="{{<f0> Step2_Data_Profiling |<f1> Analyze data quality issues using SQL queries and pandas profiling}}"];
+Step4_Integrity_Checking [shape=record rankdir=LR label="{{<f0> Step4_Integrity_Checking |<f1> Use Logica-style constraints to validate data integrity}}"];
+Step6_Documentation_Visualization [shape=record rankdir=LR label="{{<f0> Step6_Documentation_Visualization |<f1> Generate comprehensive documentation and workflow visualizations}}"];
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=2 fontname=Helvetica]
+Step3_Data_Cleaning [shape=record rankdir=LR label="{{<f0> Step3_Data_Cleaning |<f1> Apply RegEx transformations, normalization, and OpenRefine-style clustering}}"];
+Step5_Data_Validation [shape=record rankdir=LR label="{{<f0> Step5_Data_Validation |<f1> Compare pre- and post-cleaning results with comprehensive demo queries}}"];
+edge[fontname=Helvetica]
+Step1_Data_Loading -> Step2_Data_Profiling [label=Menu_table]
+Step1_Data_Loading -> Step3_Data_Cleaning [label=Menu_table]
+Step1_Data_Loading -> Step4_Integrity_Checking [label=Menu_table]
+Step1_Data_Loading -> Step5_Data_Validation [label=Menu_table]
+Step1_Data_Loading -> Step2_Data_Profiling [label=MenuPage_table]
+Step1_Data_Loading -> Step4_Integrity_Checking [label=MenuPage_table]
+Step1_Data_Loading -> Step2_Data_Profiling [label=MenuItem_table]
+Step1_Data_Loading -> Step3_Data_Cleaning [label=MenuItem_table]
+Step1_Data_Loading -> Step4_Integrity_Checking [label=MenuItem_table]
+Step1_Data_Loading -> Step5_Data_Validation [label=MenuItem_table]
+Step1_Data_Loading -> Step2_Data_Profiling [label=Dish_table]
+Step1_Data_Loading -> Step3_Data_Cleaning [label=Dish_table]
+Step1_Data_Loading -> Step4_Integrity_Checking [label=Dish_table]
+Step1_Data_Loading -> Step5_Data_Validation [label=Dish_table]
+Step3_Data_Cleaning -> Step4_Integrity_Checking [label=Menu_cleaned_table]
+Step3_Data_Cleaning -> Step5_Data_Validation [label=Menu_cleaned_table]
+Step3_Data_Cleaning -> Step4_Integrity_Checking [label=MenuItem_cleaned_table]
+Step3_Data_Cleaning -> Step5_Data_Validation [label=MenuItem_cleaned_table]
+Step3_Data_Cleaning -> Step4_Integrity_Checking [label=Dish_cleaned_table]
+Step3_Data_Cleaning -> Step5_Data_Validation [label=Dish_cleaned_table]
+}}
+subgraph cluster_input_ports_group_outer { label=""; penwidth=0
+subgraph cluster_input_ports_group_inner { label=""; penwidth=0
+node[shape=circle style=filled fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+"Menu.csv_input_port" [label=""]
+"MenuPage.csv_input_port" [label=""]
+"MenuItem.csv_input_port" [label=""]
+"Dish.csv_input_port" [label=""]
+}}
+subgraph cluster_output_ports_group_outer { label=""; penwidth=0
+subgraph cluster_output_ports_group_inner { label=""; penwidth=0
+node[shape=circle style=filled fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+"Menu_cleaned.csv_output_port" [label=""]
+"MenuItem_cleaned.csv_output_port" [label=""]
+"Dish_cleaned.csv_output_port" [label=""]
+"menus.db_output_port" [label=""]
+"profiling_charts/_output_port" [label=""]
+"integrity_reports/_output_port" [label=""]
+"validation_results/_output_port" [label=""]
+}}
+edge[fontname=Helvetica]
+"Menu.csv_input_port" -> Step1_Data_Loading [label="Menu.csv"]
+"MenuPage.csv_input_port" -> Step1_Data_Loading [label="MenuPage.csv"]
+"MenuItem.csv_input_port" -> Step1_Data_Loading [label="MenuItem.csv"]
+"Dish.csv_input_port" -> Step1_Data_Loading [label="Dish.csv"]
+edge[fontname=Helvetica]
+Step3_Data_Cleaning -> "Menu_cleaned.csv_output_port" [label="Menu_cleaned.csv"]
+Step3_Data_Cleaning -> "MenuItem_cleaned.csv_output_port" [label="MenuItem_cleaned.csv"]
+Step3_Data_Cleaning -> "Dish_cleaned.csv_output_port" [label="Dish_cleaned.csv"]
+Step1_Data_Loading -> "menus.db_output_port" [label="menus.db"]
+}
